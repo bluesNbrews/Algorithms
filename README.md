@@ -1,3 +1,5 @@
+Notes are in progress...check back later :)
+
 # Algorithms
 
 Nth Fibonacci
