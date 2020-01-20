@@ -1,3 +1,9 @@
+/*
+Now using modularized code with objects. This is a Singly-Linked List in C++.
+There are methods for display, length, insert, delete and search. The time complexities are listed below.
+The space complexity is O(n).
+*/
+
 #include <iostream>
 
 using namespace std;
@@ -78,7 +84,7 @@ int LinkedList::Length(){
 	return len;
 }
 
-//The time complexity is O(x)
+//The time complexity is O(1) (could be O(n) in worst case)
 void LinkedList::Insert(int index, int x){
 	Node *t,*p = first;
 
@@ -100,7 +106,7 @@ void LinkedList::Insert(int index, int x){
 	}
 }
 
-//The time complexity is O(index)
+//The time complexity is O(1) (could be O(n) in worst case)
 int LinkedList::Delete(int index){
 	Node *p, *q = NULL;
 	int x = -1;
@@ -127,6 +133,7 @@ int LinkedList::Delete(int index){
 	return x;
 }
 
+//The time complexity for search is O(n)
 void LinkedList::Search(int x){
 	//Start at the head and iterate through
 	//Use a boolean value for found

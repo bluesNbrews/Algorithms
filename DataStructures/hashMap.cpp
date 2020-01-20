@@ -4,8 +4,8 @@ Unordered map (STL) in C++
 2) Add key value pair
 3) Print all keys
 4) Print all values
-Insert and access is in O(1) for an unordered map.
-Deletion?
+Search, insertion, and deletion (not used here) are all performed in O(1) time (amortized). 
+The space complexity is O(n)
 Run -std=c++11 for C++11 extension of auto (g++)
 */
 

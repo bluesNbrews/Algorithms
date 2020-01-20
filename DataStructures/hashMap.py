@@ -4,8 +4,8 @@ Hash Map (Dictionary) in Python
 2) Add key value pair
 3) Print all keys
 4) Print all values
-Insert and access is in O(1) for a hash map.
-Deletion?
+Search, insertion, and deletion (not used here) are all performed in O(1) time (amortized). 
+The space complexity is O(n)
 '''
 
 myHashMap = {'22209':'Arlington','78204':'San Antonio'}

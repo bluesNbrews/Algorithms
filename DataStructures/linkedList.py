@@ -1,10 +1,12 @@
 '''
-Linked List in Python. There are two classes - one for the Node and one for the head (LinkedList)
+Now using modularized code with objects. Singly-Linked List in Python.
+There are two classes - one for the Node and one for the head (LinkedList)
 Functions include print (Methods of LinkedList), size, insert, search, and delete.
 There are also getters and setters for the data and next node (methods of Node)
+The time complexities are listed below. The space complexity is O(n)
 '''
 
-class LinkedList(object):
+class LinkedList:
 	def __init__(self):
 		self.head = None
 
@@ -16,7 +18,7 @@ class LinkedList(object):
 			print(current.data)
 			current = current.nextNode
 
-class Node(object):
+class Node:
 	def __init__(self,data=None,nextNode=None):
 		self.data = data
 		self.nextNode = nextNode
@@ -52,7 +54,7 @@ def insert(self,data):
 	newNode.set_next(self.head)
 	self.head = newNode
 
-#The time complexity of print is O(n) in the worst case
+#The time complexity of print is O(n) 
 def search(self, data):	
 	current = self.head
 	found = False
@@ -68,7 +70,7 @@ def search(self, data):
 
 	return current
 
-#The time complexity of print is O(n) in the worst case
+#The time complexity of print is O(n) 
 def delete(self, data):
 
 	current = self.head
@@ -101,13 +103,13 @@ def main():
 	myLinkedList.head.nextNode = second
 	second.nextNode = third
 
-	#myLinkedList.print()
-	#insert(myLinkedList,4)
-	#size(myLinkedList)
-	#searchNode = search(myLinkedList,3)
-	#print(searchNode.data)
-	#delete(myLinkedList, 2)
-	#myLinkedList.print()
+	myLinkedList.print()
+	insert(myLinkedList,4)
+	size(myLinkedList)
+	searchNode = search(myLinkedList,3)
+	print(searchNode.data)
+	delete(myLinkedList, 2)
+	myLinkedList.print()
 
 
 if __name__ == "__main__":
