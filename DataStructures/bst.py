@@ -51,6 +51,24 @@ def printInOrder(root):
 		#Then recursively call the right child
 		printInOrder(root.right)
 
+def printPreOrder(root):
+	if root:
+		#Print the data of that node
+		print(root.data)
+		#First recursively call via the left child
+		printPreOrder(root.left)
+		#Then recursively call the right child
+		printPreOrder(root.right)
+
+def printPostOrder(root):
+	if root:
+		#First recursively call via the left child
+		printPostOrder(root.left)
+		#Then recursively call the right child
+		printPostOrder(root.right)
+		#Print the data of that node
+		print(root.data)
+
 def main():
 	myRoot = Node(50)
 	insert(myRoot, Node(30))
@@ -61,6 +79,13 @@ def main():
 	insert(myRoot, Node(80))
 
 	printInOrder(myRoot)
+	print("\n")
+
+	printPreOrder(myRoot)
+	print("\n")
+
+	printPostOrder(myRoot)
+	print("\n")
 
 	print(search(myRoot,70).data)
 
