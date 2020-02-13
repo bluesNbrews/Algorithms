@@ -51,6 +51,8 @@ def printInOrder(root):
 		#Then recursively call the right child
 		printInOrder(root.right)
 
+#Preorder tree traversal - O(n) where n is the total number of nodes
+#This is an example of a Depth First Search
 def printPreOrder(root):
 	if root:
 		#Print the data of that node
@@ -60,6 +62,8 @@ def printPreOrder(root):
 		#Then recursively call the right child
 		printPreOrder(root.right)
 
+#Postorder tree traversal - O(n) where n is the total number of nodes
+#This is an example of a Depth First Search
 def printPostOrder(root):
 	if root:
 		#First recursively call via the left child

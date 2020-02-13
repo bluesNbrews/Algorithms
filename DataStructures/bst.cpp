@@ -22,6 +22,10 @@ public:
 	void Search(BST *, int);
 	//Declaration for the Inorder function
 	void Inorder(BST *);
+	//Declaration for the Preorder function
+	void Preorder(BST *);
+	//Declaration for the Postorder function
+	void Postorder(BST *);
 };
 
 //Default constructor
@@ -73,15 +77,40 @@ void BST::Search(BST *root, int key){
 //Inorder tree traversal - O(n) where n is the total number of nodes
 //This is an example of a Depth First Search
 void BST::Inorder(BST *root){
-	if(!root){
-		return;
+	if(root){
+		//First recursively call via the left child
+		Inorder(root->left);
+		//Print the data of that node
+		cout << root->data << endl;
+		//Then recursively call the right child
+		Inorder(root->right);
 	}
-	//First recursively call via the left child
-	Inorder(root->left);
-	//Print the data of that node
-	cout << root->data << endl;
-	//Then recursively call the right child
-	Inorder(root->right);
+}
+
+//Preorder tree traversal - O(n) where n is the total number of nodes
+//This is an example of a Depth First Search
+void BST::Preorder(BST *root){
+	if(root){
+		//Print the data of that node
+		cout << root->data << endl;
+		//First recursively call via the left child
+		Preorder(root->left);
+		//Then recursively call the right child
+		Preorder(root->right);
+	}
+}
+
+//Postorder tree traversal - O(n) where n is the total number of nodes
+//This is an example of a Depth First Search
+void BST::Postorder(BST *root){
+	if(root){
+		//First recursively call via the left child
+		Postorder(root->left);
+		//Then recursively call the right child
+		Postorder(root->right);
+		//Print the data of that node
+		cout << root->data << endl;
+	}
 }
 
 int main(){
@@ -96,6 +125,8 @@ int main(){
 	b.Insert(root, 80);
 
 	b.Inorder(root);
+	b.Preorder(root);
+	b.Postorder(root);
 
 	b.Search(root, 70);
 
