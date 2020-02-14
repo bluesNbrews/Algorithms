@@ -2,6 +2,14 @@
 Binary search tree implementation in Python. Methods so far are insertion, search and inorder traversal (depth first search).
 Next methods will be deletion, postorder traversal, preorder traversal and level order traversal.
 Time complexities are listed below. The space complexity is O(n)
+
+My BST 
+              50 
+           /     \\ 
+          30      70 
+         /  \\    /  \\ 
+       20   40  60   80 */
+
 '''
 
 class Node:
@@ -9,6 +17,18 @@ class Node:
 		self.left = None
 		self.right = None
 		self.data = data
+
+def height(node):
+	if node is None:
+		return 0
+	else:
+		lheight = height(node.left)
+		rheight = height(node.right)
+
+		if lheight > rheight:
+			return lheight + 1
+		else:
+			return rheight + 1
 
 #Best case time complexity is O(logn) and worst case is O(n)
 def insert(root, node):
@@ -92,6 +112,8 @@ def main():
 	print("\n")
 
 	print(search(myRoot,70).data)
+
+	print(height(myRoot))
 
 if __name__ == "__main__":
 	main()
