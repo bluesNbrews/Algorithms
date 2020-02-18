@@ -18,6 +18,7 @@ class Node:
 		self.right = None
 		self.data = data
 
+#Calculate the height of a tree - from the root to the farthest leaf node
 def height(node):
 	if node is None:
 		return 0
@@ -59,6 +60,23 @@ def search(root,key):
 		return search(root.right, key)
 	#Start search down the left side of the BST
 	return search(root.left,key)
+
+#Print nodes on a specified level (e.g. level 1 is only the root node)
+def printGivenLevel(root, level):
+	if root is None:
+		return
+	if level == 1:
+		print("%d" %root.data)
+	elif level > 1:
+		printGivenLevel(root.left, level - 1)
+		printGivenLevel(root.right, level - 1)
+
+#Use both the height and printGivenLevel functions to traverse the BST in a Breadth First Search manner. 
+#The printGivenLevel funciton is usd recursively for all levels of the BST. 
+def printLevelOrder(root):
+	h = height(root)
+	for i in range(1, h + 1):
+		printGivenLevel(root, i)
 
 #Inorder tree traversal - O(n) where n is the total number of nodes
 #This is an example of a Depth First Search
@@ -112,8 +130,9 @@ def main():
 	print("\n")
 
 	print(search(myRoot,70).data)
+	print("\n")
 
-	print(height(myRoot))
+	printLevelOrder(myRoot)
 
 if __name__ == "__main__":
 	main()
