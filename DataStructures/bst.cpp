@@ -8,14 +8,16 @@ Time complexities are listed below. The space complexity is O(n)
 using namespace std;
 
 class BST{
-	int data;
-	BST *left, *right;
 
 public:	
+	int data;
+	BST *left, *right;
 	//Default constructor
 	BST();
 	//Constructor with data value parameter
 	BST(int);
+	//Declaration for the Hieght function
+	int Height(BST *);
 	//Declaration for the Insert function
 	BST* Insert(BST *, int);
 	//Declaration for the Search function
@@ -39,6 +41,21 @@ BST::BST(){
 BST::BST(int value){
 	data = value;
 	left = right = NULL;
+}
+
+//Calculate the height of a tree - from the root to the farthest leaf node
+int BST::Height(BST *root){
+	if(root == NULL)
+		return 0;
+	else{
+		int lheight = Height(root->left);
+		int rheight = Height(root->right);
+
+		if(lheight > rheight)
+			return(lheight + 1);
+		else
+			return(rheight + 1);
+	}
 }
 
 //Best case time complexity is O(logn) and worst case is O(n)
@@ -129,6 +146,8 @@ int main(){
 	b.Postorder(root);
 
 	b.Search(root, 70);
+
+	cout << "The height of the BST is: " << b.Height(root) << endl;
 
 	return 0;
 }
