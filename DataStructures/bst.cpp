@@ -2,6 +2,13 @@
 Binary search tree implementation in C++. Methods so far are insertion, search and inorder traversal (depth first search).
 Next methods will be deletion, postorder traversal, preorder traversal and level order traversal.
 Time complexities are listed below. The space complexity is O(n)
+
+My BST 
+              50 
+           /     \\ 
+          30      70 
+         /  \\    /  \\ 
+       20   40  60   80 
 */
 
 #include<iostream>
@@ -22,6 +29,10 @@ public:
 	BST* Insert(BST *, int);
 	//Declaration for the Search function
 	void Search(BST *, int);
+	//Declaration for the printGivenLevel function
+	void PrintGivenLevel(BST *, int);
+	//Declaration for the printGivenLevel function
+	void PrintLevelOrder(BST *);
 	//Declaration for the Inorder function
 	void Inorder(BST *);
 	//Declaration for the Preorder function
@@ -91,6 +102,27 @@ void BST::Search(BST *root, int key){
 	}
 }
 
+//Print nodes on a specified level (e.g. level 1 is only the root node)
+void BST::PrintGivenLevel(BST *root, int level){
+	if(root == NULL)
+		return;
+	if(level == 1)
+		cout << root->data << endl;
+	else if (level > 1){
+		PrintGivenLevel(root->left, level - 1);
+		PrintGivenLevel(root->right, level - 1);
+	}
+}
+
+//Use both the height and printGivenLevel functions to traverse the BST in a Breadth First Search manner. 
+//The printGivenLevel funciton is usd recursively for all levels of the BST. 
+void BST::PrintLevelOrder(BST *root){
+	int height = Height(root);
+	for(int i = 1; i <= height; i++){
+		PrintGivenLevel(root, i);
+	}
+}
+
 //Inorder tree traversal - O(n) where n is the total number of nodes
 //This is an example of a Depth First Search
 void BST::Inorder(BST *root){
@@ -148,6 +180,8 @@ int main(){
 	b.Search(root, 70);
 
 	cout << "The height of the BST is: " << b.Height(root) << endl;
+
+	b.PrintLevelOrder(root);
 
 	return 0;
 }
