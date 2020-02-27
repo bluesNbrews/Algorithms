@@ -1,7 +1,7 @@
 '''
-Binary search tree implementation in Python. Methods so far are insertion, search and inorder traversal (depth first search).
-Next methods will be deletion, postorder traversal, preorder traversal and level order traversal.
-Time complexities are listed below. The space complexity is O(n)
+Binary search tree implementation in Python. Methods include insertion, deletion, search, level order traversal, inorder traversal, preorder traversal and postorder traversal.
+Time complexities are listed below. The space complexity is O(n).
+The delete function is still in progress.
 
 My BST 
               50 
@@ -19,6 +19,7 @@ class Node:
 		self.data = data
 
 #Calculate the height of a tree - from the root to the farthest leaf node
+#The time complexity is O(h)
 def height(node):
 	if node is None:
 		return 0
@@ -30,6 +31,18 @@ def height(node):
 			return lheight + 1
 		else:
 			return rheight + 1
+
+#Find and return the node with the minimum value in the BST
+#The time complexity is O(h)
+def minValueNode(root):
+
+	current = root
+
+	#Given the nature of a BST the min node value will be at the bottom left of the tree
+	while(current.left is not None):
+		current = current.left
+
+	return current
 
 #Best case time complexity is O(logn) and worst case is O(n)
 def insert(root, node):
@@ -133,6 +146,9 @@ def main():
 	print("\n")
 
 	printLevelOrder(myRoot)
+
+	print("Min value node is {}".format(minValueNode(myRoot).data))
+
 
 if __name__ == "__main__":
 	main()
