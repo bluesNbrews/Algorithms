@@ -1,7 +1,7 @@
 /*
-Binary search tree implementation in C++. Methods so far are insertion, search and inorder traversal (depth first search).
-Next methods will be deletion, postorder traversal, preorder traversal and level order traversal.
-Time complexities are listed below. The space complexity is O(n)
+Binary search tree implementation in Python. Methods include insertion, deletion, search, level order traversal, inorder traversal, preorder traversal and postorder traversal.
+Time complexities are listed below. The space complexity is O(n).
+The delete function is still in progress.
 
 My BST 
               50 
@@ -25,6 +25,8 @@ public:
 	BST(int);
 	//Declaration for the Hieght function
 	int Height(BST *);
+	//Declaration for the minValueNode function
+	BST* minValueNode(BST *);
 	//Declaration for the Insert function
 	BST* Insert(BST *, int);
 	//Declaration for the Search function
@@ -67,6 +69,21 @@ int BST::Height(BST *root){
 		else
 			return(rheight + 1);
 	}
+}
+
+//Find and return the node with the minimum value in the BST
+//The time complexity is O(h)
+BST* BST::minValueNode(BST *root){
+
+	BST *current;
+
+	current = root;
+
+	//Given the nature of a BST the min node value will be at the bottom left of the tree
+	while(current->left != NULL)
+		current = current->left;
+
+	return current;
 }
 
 //Best case time complexity is O(logn) and worst case is O(n)
@@ -182,6 +199,8 @@ int main(){
 	cout << "The height of the BST is: " << b.Height(root) << endl;
 
 	b.PrintLevelOrder(root);
+
+	cout << "The minimum node value of the BST is: " << b.minValueNode(root)->data;
 
 	return 0;
 }
